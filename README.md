@@ -4,8 +4,10 @@ It has used a div tag as a loading panel and showed it when the action method st
 
 This code snippet shows how to show a loading panel in middle of a long running action, If you want to style this loading panel you can use bootstrap styling or any other technique
 
+
 <code> 
-  <script> 
+   
+    <script>
             $(function () { 
  
                 $('#loaddata').click(function () { 
@@ -37,4 +39,4 @@ This code snippet shows how to show a loading panel in middle of a long running 
  
             }); 
         </script>
-  </code>
+</code>
