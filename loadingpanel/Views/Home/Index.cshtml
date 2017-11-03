@@ -1,0 +1,80 @@
+﻿@*@model List<string>*@
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Indexs</h2>
+
+<input type="button" value="Load Data" id="loaddata"/>
+
+<table>
+    <thead style="display:none" id="tableheader">
+        <tr>
+            <th>
+                Column1 
+            </th>
+            <th>
+                Column2
+            </th>
+            <th>
+                Column3
+            </th>
+            <th>
+                Column4
+            </th>
+            <th>
+                Column5
+            </th>
+            <th>
+                Column6
+            </th>
+        </tr>
+    </thead>
+    <tbody id="tablebody">
+
+    </tbody>
+</table>
+
+<div id="loading-div-background" style="display:none">
+    <div id="loading-div" class="ui-corner-all">
+        <div id="loadingbar"><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i></div>
+        <h2 style="color:gray;font-weight:normal;">Please wait....</h2>
+    </div>
+</div>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"></script>
+
+        <script>
+            $(function () {
+
+                $('#loaddata').click(function () {
+
+                    $('#loading-div-background').show();
+
+                    Promise.resolve($.ajax({
+                        type: "GET",
+                        url: '/Home/GetData',
+                        contentType: false,
+                        processData: false
+                    })).then(function (result) {
+                        if (result) {
+                            $('#loading-div-background').hide();
+                            $("#tableheader").show()
+                            var row = "";
+                            $.each(result, function (index, item) {
+                                row += "<tr><td><input type='checkbox'id='chk_"
+                                    + item + "'/></td><td>" + item + "</td><td>"
+                                    + item + "</td><td>" + item + "</td><td>" + item
+                                    + "</td><td>" + item + "</td></tr> ";
+                            });
+                            $("#tablebody").html(row);
+                        }
+                    }).catch(function (e) {
+                        console.log(e);
+                    });
+                });
+
+            });
+        </script>
+  @*  }*@
