@@ -4,3 +4,37 @@ It has used a div tag as a loading panel and showed it when the action method st
 
 This code snippet shows how to show a loading panel in middle of a long running action, If you want to style this loading panel you can use bootstrap styling or any other technique
 
+<code> 
+  <script> 
+            $(function () { 
+ 
+                $('#loaddata').click(function () { 
+ 
+                    $('#loading-div-background').show(); 
+ 
+                    Promise.resolve($.ajax({ 
+                        type: "GET", 
+                        url: '/Home/GetData', 
+                        contentType: false, 
+                        processData: false 
+                    })).then(function (result) { 
+                        if (result) { 
+                            $('#loading-div-background').hide(); 
+                            $("#tableheader").show() 
+                            var row = ""; 
+                            $.each(result, function (index, item) { 
+                                row += "<tr><td><input type='checkbox'id='chk_" 
+                                    + item + "'/></td><td>" + item + "</td><td>" 
+                                    + item + "</td><td>" + item + "</td><td>" + item 
+                                    + "</td><td>" + item + "</td></tr> "; 
+                            }); 
+                            $("#tablebody").html(row); 
+                        } 
+                    }).catch(function (e) { 
+                        console.log(e); 
+                    }); 
+                }); 
+ 
+            }); 
+        </script>
+  </code>
