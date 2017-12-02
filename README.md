@@ -2,6 +2,8 @@ This sample code demonstrates how to show a simple loading panel until a long ru
 
 It has used a div tag as a loading panel and showed it when the action method starts, after data loads succesfully it hides the loading panel
 
+Read this article to find how to add a Jquery loading panel, https://social.technet.microsoft.com/wiki/contents/articles/46671.asp-net-core-how-to-show-a-loading-panel-in-a-page.aspx
+
 This code snippet shows how to show a loading panel in middle of a long running action, If you want to style this loading panel you can use bootstrap styling or any other technique
 
 
